@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      backdrop-filter: blur(-50px);
+    }
+    .carta {
+      max-width: auto;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .encabezado, .pie {
+      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+    }
+    .encabezado{
+      border-radius: 10px 10px 0 0;
+    }
+    .pie{
+      border-radius: 0 0 10px 10px;
+    }
+    .cuerpo {
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1;
+    }
+    .cuerpo span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: drop 0.5s ease forwards;
+    }
+    th, td{
+      border: ;
+    }
+
+    .title{
+      padding: 20px 0;
+    }
+
+    .centrar{
+      padding: 0 280px;
+    }
+
+    .flotar{
+      padding: 0 30px;
+    }
+    @keyframes drop {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="carta">
+    <div class="encabezado">
+      <center>
+        <table>
+          <tbody>
+            <tr>
+              <td class="title"><h1>Conocerte</h1></td>
+              <td class="" title="Carta Virtual"><h3></h3></td>
+              <td class="flotar"><h5>Martes 21 de mayo 2024, 13:00</h5></td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+    </div>
+    <div class="cuerpo" id="cuerpo">
+      <!-- El contenido de la carta se llenará con JavaScript -->
+    </div>
+    <div class="pie">
+      <p>© 2024 Edward. Todos los derechos reservados.</p>
+    </div>
+  </div>
+
+  <script>
+    const parrafos = [
+      'Hola niña, ¿Cómo estás?',
+      'Quiero que sepas cuánto valoro todo esto que poco a poco surge. Tu presencia en mi vida ha traído una gran y significativa cantidad de felicidad y satisfacción. Tu risa, tu amabilidad y tu inteligencia son solo algunas de las cosas que admiro de ti.',
+      'Cada día contigo es una aventura y cada conversación que tenemos me hace apreciarte aún más. Eres una mujer increíblemente fuerte y determinada, y eso me inspira a ser una mejor persona.',
+      'Quiero que sepas que tus logros no pasan desapercibidos y que estoy orgulloso de todo lo que has logrado. Eres una mujer de gran carácter y eso es algo que admiro profundamente.',
+      'Finalmente, quiero que sepas que estoy aquí para ti, y no solo para en los buenos momentos, sino para los malos también, porque ahí se demuestra de qué se está uno hecho. Ya que últimamente crece el deseo de que tu y tu felicidad sean importantes para mí y siempre estaré a tu lado para apoyarte según me lo permitas.',
+      'Con cariño y estima,',
+      'Edward'
+    ];
+    const cuerpo = document.getElementById('cuerpo');
+    let delay = 0;
+
+    // Crea un div para cada párrafo y aplica la animación
+    parrafos.forEach((parrafo, i) => {
+      let div = document.createElement('div');
+      for (let j = 0; j < parrafo.length; j++) {
+        let span = document.createElement('span');
+        span.textContent = parrafo[j] === '\n' ? '\u00A0' : parrafo[j];
+        if (parrafo[j] === ' ') {
+          span.innerHTML = ' ';
+        }
+        span.style.animationDelay = `${delay}s`;
+        delay += 0.05;
+        div.appendChild(span);
+      }
+      cuerpo.appendChild(div);
+      delay += 1; // Añade un retraso adicional entre los párrafos
+    });
+  </script>
+</body>
+</html>
